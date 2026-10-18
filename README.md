@@ -1,8 +1,7 @@
 # Repro: measureInWindow after a page sheet is dismissed (iOS, Fabric)
 
-Not run yet, written from the issue. Needs an iPhone (for example iPhone Air, portrait).
+Run on: iOS 27 simulator (iPhone 17), React Native 0.88.0, plain Modal (no navigation library).
 
-1. `npm install`, `npx pod-install`, run on iOS.
-2. Tap Measure, note the y value.
-3. Tap Open page sheet, then Dismiss.
-4. Tap Measure again. Expected: the same y. Reported: y off by the sheet shrink (about 20 or 68 pt).
+Result: NOT reproduced. Before opening the page sheet and after dismissing it, measureInWindow returned x=24 y=80.
+
+The report came from an app that uses react-native-screens 4.30.0 with a native stack. The trigger is probably that navigation setup, not the Modal alone.
